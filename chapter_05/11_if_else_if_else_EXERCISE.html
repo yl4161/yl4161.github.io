@@ -33,7 +33,19 @@
 					return d;
 				})
 				.style("color", function(d) {
-                    return "red"
+                    if ((d % 3==0) && (d % 5==0)) {
+                        return "green";
+                    } else if (d % 5==0) {
+                        return "red";
+                    } else if (d % 3==0) {
+                        return "blue";
+                        } else {
+                        return "black";
+                    }
+        
+
+                
+                    
                     //YOUR CODE WILL BE HERE
                     //
                     

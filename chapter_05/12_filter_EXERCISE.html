@@ -6,8 +6,29 @@
         <script type="text/javascript" src="../d3.js"></script>
 	</head>
 	<body>
-		<script type="text/javascript">
+      <script type="text/javascript">
       
+        d3.csv("data/density_income_ny_counties.csv")
+        .then(function(data) {
+           console.log(data);
+
+      
+      d3.select("body").selectAll("p")
+          .data(data)
+          .enter()
+         .append("p")
+   .text(function(d) {
+      return d.Geo_NAME;
+   })
+   .style("color", function(d) {
+      if (parseFloat(d.median_income)>65323){
+         return "red";
+      } else {
+         return "black";
+      }
+   });
+        });
+       
       //use what you have learned so far to load the file of density and income data in the data folder in this chapter
       //file name is "density_income_ny_counties.csv"
       //see 03 for loading
