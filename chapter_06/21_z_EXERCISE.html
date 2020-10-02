@@ -16,7 +16,7 @@
             
 			//Width and height
 			var w = 500;
-			var h = 500;//NOTE: I have changed the height of the svg already so that the chart will not be clipped
+			var h = 500//NOTE: I have changed the height of the svg already so that the chart will not be clipped
 			var barPadding = 1;
 			
 			var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
@@ -38,7 +38,7 @@
 			   		return i * (w / dataset.length);
 			   })
 			   .attr("x", function(d) {
-			   		return (d * 4);
+			   		return 1;
 			   })
 			   .attr("height", w / dataset.length - barPadding)
 			   .attr("width", function(d) {
@@ -62,7 +62,7 @@
 			   		return i * (w / dataset.length) + (w / dataset.length - barPadding) / 2;
 			   })
 			   .attr("x", function(d) {
-			   		return (d * 4) + 14;
+			   		return (d * 4) - 15;
 			   })
 			   .attr("font-family", "sans-serif")
 			   .attr("font-size", "11px")
