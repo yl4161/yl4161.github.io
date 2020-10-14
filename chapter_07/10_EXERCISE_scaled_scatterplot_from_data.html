@@ -87,6 +87,13 @@
                   //TODO:add a third linear scale here for the radius of the circles called rScale. 
                 // the domain would be the minimum and maxium values for the count same as the yScale
                //the range would be of your choosing, experiment till it looks ok
+			   
+			   rScale = d3.scaleLinear()
+								.domain([
+									d3.min(dataset, function(d) { return d.Count; }),
+									d3.max(dataset, function(d) { return d.Count; })
+								])
+								.range([(padding/100+5), ((w - padding)/100+5)]);
         
 				var svg = d3.select("body")
 							.append("svg")
@@ -99,11 +106,14 @@
  				   .append("text")
  				   .text(function(d) {
                        //TODO: return the approperiate label value
+					   return d.Hour + "," + d.Count;
  				   })
  				   .attr("x", function(d) {
+						return xScale(d.Hour)
                        //TODO: return the approperiate x value
  				   })
  				   .attr("y", function(d) {
+						return yScale(d.Count)
                        //TODO: return the approperiate y value
  				   })
  				   .attr("font-family", "sans-serif")
@@ -115,12 +125,15 @@
 				   .enter()
 				   .append("circle")
 				   .attr("cx", function(d) {
+						return xScale(d.Hour)
                        //TODO: return the approperiate x value
 				   })
 				   .attr("cy", function(d) {
+						return yScale(d.Count)
                        //TODO: return the approperiate y value
 				   })
 				   .attr("r", function(d){
+					   return rScale(d.Count)
                        //TODO: use the rScale to create circles whose size correspond to the count
 				   });
                    
